@@ -4,13 +4,18 @@ import { useMachine } from '@xstate/vue';
 import { Machine } from 'xstate';
 
 export default defineComponent({
-  name: 'Grid',
+  name: 'PainterToolbar',
 })
 </script>
 
 
 <template>
-  <canvas ref="grid"></canvas>
+  <canvas ref="grid">
+    <template v-slot:context-menu="">
+    <slot name="context-menu" :context="activeCell">
+    </slot>
+    </template>
+  </canvas>
 </template>
 
 <style>
